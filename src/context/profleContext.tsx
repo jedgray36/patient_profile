@@ -5,6 +5,8 @@ interface ProfileContextType {
   setEditMode: (value: boolean) => void;
   createDoctorsNote: boolean;
   setCreateDoctorsNote: (value: boolean) => void;
+  isMedicationsModal: boolean;
+  setIsMedicationsModal: (value: boolean) => void;
   darkMode: boolean;
   setDarkMode: (value: boolean) => void;
   openNotesModal: boolean;
@@ -17,6 +19,7 @@ export const ProfileProvider = ({ children }: { children: ReactNode }) => {
   const [editMode, setEditMode] = useState(false);
   const [createDoctorsNote, setCreateDoctorsNote] = useState(false);
   const [openNotesModal, setOpenNotesModal] = useState(false);
+  const [isMedicationsModal, setIsMedicationsModal] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
   return (
@@ -24,6 +27,8 @@ export const ProfileProvider = ({ children }: { children: ReactNode }) => {
       value={{
         editMode,
         setEditMode,
+        isMedicationsModal,
+        setIsMedicationsModal,
         createDoctorsNote,
         setCreateDoctorsNote,
         setOpenNotesModal,

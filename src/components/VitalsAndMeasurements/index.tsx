@@ -15,10 +15,13 @@ const VitalsAndMeasurements = ({
 }: Patient) => {
   const styles = usePersonalInformationStyles();
   const patientDataStyles = usePatientDataStyles();
-  const [isMedication, setIsMedication] = useState(true);
-  const [medicationsModal, setMedicationsModal] = useState(false);
-  const { openNotesModal, setOpenNotesModal, setEditMode } =
-    useProfileContext();
+  const {
+    isMedicationsModal,
+    setIsMedicationsModal,
+    openNotesModal,
+    setOpenNotesModal,
+    setEditMode,
+  } = useProfileContext();
 
   const currentWeight = measurements.find(
     (m) => m.type.toUpperCase() === "WEIGHT"
@@ -26,6 +29,7 @@ const VitalsAndMeasurements = ({
 
   const onCloseModal = () => {
     setOpenNotesModal(false);
+    setIsMedicationsModal(false);
   };
 
   let weightColor = "text.primary";
@@ -78,7 +82,7 @@ const VitalsAndMeasurements = ({
             <Button
               sx={{ mr: 1 }}
               onClick={() => {
-                setIsMedication(false);
+                setIsMedicationsModal(false);
                 setOpenNotesModal(true);
                 setEditMode(false);
               }}
@@ -87,7 +91,7 @@ const VitalsAndMeasurements = ({
             </Button>
             <Button
               onClick={() => {
-                setIsMedication(true);
+                setIsMedicationsModal(true);
                 setOpenNotesModal(true);
               }}
             >
@@ -97,7 +101,7 @@ const VitalsAndMeasurements = ({
         </Box>
         <MedicationsModal
           doctorsNotes={doctorNotes.data}
-          isNotes={!isMedication}
+          isNotes={isMedicationsModal}
           medications={medications}
           open={openNotesModal}
           onClose={onCloseModal}

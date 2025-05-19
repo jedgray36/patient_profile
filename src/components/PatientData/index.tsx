@@ -29,7 +29,7 @@ const PatientData = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [memo, setMemo] = useState(false);
   const menuOpen = Boolean(anchorEl);
-  const { setEditMode, setCreateDoctorsNote, setOpenNotesModal } =
+  const { setEditMode, setIsMedicationsModal, setOpenNotesModal } =
     useProfileContext();
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -42,9 +42,9 @@ const PatientData = () => {
   };
 
   const handleCreateDoctorNote = () => {
+    setIsMedicationsModal(false);
+    setEditMode(true);
     setOpenNotesModal(true);
-    setCreateDoctorsNote(true);
-    setEditMode(false);
     handleMenuClose();
   };
 

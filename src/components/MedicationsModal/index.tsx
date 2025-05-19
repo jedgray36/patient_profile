@@ -58,11 +58,11 @@ const MedicationsModal = ({
         <Box sx={styles.modal}>
           <Box sx={styles.header}>
             <Typography variant="h6">
-              {!isNotes ? "Medications" : "Doctors Notes"} for {firstName}
+              {isNotes ? "Medications" : "Doctors Notes"} for {firstName}
             </Typography>
           </Box>
           <Box>
-            {!isNotes ? (
+            {isNotes ? (
               medications?.map((med) => (
                 <Box key={med.id} sx={{ mb: 2 }}>
                   <Typography
