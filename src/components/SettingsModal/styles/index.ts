@@ -17,6 +17,7 @@ export const useModalStyles = () => {
             bgcolor: 'background.paper',
             minHeight: '10rem',
             maxHeight: '85vh',
+            maxWidth: '40rem',
         },
         header: {
             display: 'flex',
