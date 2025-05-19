@@ -42,6 +42,7 @@ const SettingsModal = ({ open, onClose }: SettingsModalProps) => {
             sx={{
               padding: 2,
               display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
               justifyContent: "space-evenly",
               alignItems: "center",
             }}

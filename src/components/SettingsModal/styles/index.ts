@@ -7,7 +7,7 @@ export const useModalStyles = () => {
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: '40rem',
+            width: '90vw',
             borderRadius: '1rem',
             boxShadow: '24',
             paddingLeft: '3rem',
@@ -26,7 +26,7 @@ export const useModalStyles = () => {
         },
         footer: {
             display: 'flex',
-            width: '40rem',
+            width: '90vw',
             justifyContent: 'flex-end',
             alignItems: 'flex-end',
             borderTop: "1px solid #ccc",
