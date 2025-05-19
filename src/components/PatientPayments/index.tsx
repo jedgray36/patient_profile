@@ -46,8 +46,6 @@ const PatientPayments = ({ open, onClose, payments }: PatientPaymentsProps) => {
               <Typography variant="subtitle1" sx={styles.subtitle}>
                 {payment.description}
               </Typography>
-
-              {/* Metadata in two columns */}
               <Box sx={styles.detailGrid}>
                 <Typography sx={styles.detailItem}>
                   <strong>Total:</strong> ${payment.total.toFixed(2)}
@@ -87,8 +85,6 @@ const PatientPayments = ({ open, onClose, payments }: PatientPaymentsProps) => {
                   </>
                 )}
               </Box>
-
-              {/* Line Items Table */}
               <TableContainer sx={{ mt: 2 }}>
                 <Table size="small">
                   <TableHead>

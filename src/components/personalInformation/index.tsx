@@ -28,7 +28,15 @@ const PersonalInformation = ({
         <Typography sx={styles.centerText}>
           {firstName || lastName
             ? `${firstName ?? ""} ${lastName ?? ""}`
-            : "Not provided"}
+            : "Not provided"}{" "}
+          <Typography sx={{ ml: 2 }}>({gender})</Typography>
+        </Typography>
+      </Box>
+
+      <Box>
+        <Typography sx={styles.personalInfoText}>
+          <Typography sx={styles.bold}>Email:</Typography>
+          {email || "Not provided"}
         </Typography>
       </Box>
 
@@ -36,13 +44,6 @@ const PersonalInformation = ({
         <Typography sx={styles.personalInfoText}>
           <Typography sx={styles.bold}>Date of Birth:</Typography>
           {dateOfBirth || "Not provided"}
-        </Typography>
-      </Box>
-
-      <Box>
-        <Typography sx={styles.personalInfoText}>
-          <Typography sx={styles.bold}>Gender:</Typography>
-          {gender || "Not provided"}
         </Typography>
       </Box>
 
