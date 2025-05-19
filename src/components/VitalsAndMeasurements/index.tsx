@@ -21,6 +21,7 @@ const VitalsAndMeasurements = ({
     openNotesModal,
     setOpenNotesModal,
     setEditMode,
+    setCreateDoctorsNote,
   } = useProfileContext();
 
   const currentWeight = measurements.find(
@@ -85,6 +86,7 @@ const VitalsAndMeasurements = ({
                 setIsMedicationsModal(false);
                 setOpenNotesModal(true);
                 setEditMode(false);
+                setCreateDoctorsNote(false);
               }}
             >
               Doctors Notes
