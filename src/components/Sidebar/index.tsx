@@ -3,7 +3,9 @@ import {
   AccountCircle,
   ChevronLeft,
   ChevronRight,
+  Dashboard,
   HomeFilled,
+  Message,
   Settings,
 } from "@mui/icons-material";
 import { Box, Button, IconButton, Typography } from "@mui/material";
@@ -74,10 +76,36 @@ const Sidebar = ({ collapsed, onToggle }: SidebarProps) => {
               disabled
               style={sidebarStyles.settingsButton(collapsed)}
             >
+              <Dashboard sx={sidebarStyles.settingsIcon} />
+              {!collapsed && (
+                <Typography sx={{ textTransform: "capitalize" }}>
+                  Dashboard
+                </Typography>
+              )}
+            </IconButton>
+          </Box>
+          <Box sx={{ mb: 2 }}>
+            <IconButton
+              disabled
+              style={sidebarStyles.settingsButton(collapsed)}
+            >
               <AccountCircle sx={sidebarStyles.settingsIcon} />
               {!collapsed && (
                 <Typography sx={{ textTransform: "capitalize" }}>
                   Patients List
+                </Typography>
+              )}
+            </IconButton>
+          </Box>
+          <Box sx={{ mb: 2 }}>
+            <IconButton
+              disabled
+              style={sidebarStyles.settingsButton(collapsed)}
+            >
+              <Message sx={sidebarStyles.settingsIcon} />
+              {!collapsed && (
+                <Typography sx={{ textTransform: "capitalize" }}>
+                  Messages
                 </Typography>
               )}
             </IconButton>
