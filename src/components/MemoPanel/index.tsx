@@ -13,6 +13,7 @@ import {
   Add,
   Close,
   Delete,
+  Edit,
   PlusOne,
   Remove,
   RemoveRounded,
@@ -30,6 +31,8 @@ const MemoPanel = ({ open, onClose, memos }: MemoPanelProps) => {
   const { editMode, setEditMode } = useProfileContext();
   const [newNote, setNewNote] = useState("");
   const [memoData, setMemoData] = useState(memos);
+  const [editingMemoId, setEditingMemoId] = useState<string | null>(null);
+  const [editingNote, setEditingNote] = useState("");
 
   const handleAddMemo = () => {
     if (!newNote.trim()) return;
@@ -39,9 +42,9 @@ const MemoPanel = ({ open, onClose, memos }: MemoPanelProps) => {
       note: newNote.trim(),
       createdDate: new Date().toISOString(),
       creator: {
-        firstName: "John",
-        lastName: "Doe",
-        email: "john.doe@example.com",
+        firstName: "Jed",
+        lastName: "Gray",
+        email: "jedgray@gmail.com",
       },
     };
 
@@ -51,6 +54,21 @@ const MemoPanel = ({ open, onClose, memos }: MemoPanelProps) => {
 
   const handleRemoveMemo = (id: string) => {
     setMemoData((prev) => prev.filter((memo) => memo.id !== id));
+  };
+
+  const handleEditClick = (memo: Memo) => {
+    setEditingMemoId(memo.id);
+    setEditingNote(memo.note);
+  };
+
+  const handleEditSave = (id: string) => {
+    setMemoData((prev) =>
+      prev.map((memo) =>
+        memo.id === id ? { ...memo, note: editingNote } : memo
+      )
+    );
+    setEditingMemoId(null);
+    setEditingNote("");
   };
 
   return (
@@ -127,19 +145,68 @@ const MemoPanel = ({ open, onClose, memos }: MemoPanelProps) => {
           ) : null}
           <List>
             {memoData.map((memo) => (
-              <ListItem key={memo.id} alignItems="flex-start">
-                <ListItemText
-                  primary={memo.note}
-                  secondary={`${memo.creator.firstName} ${
-                    memo.creator.lastName
-                  } — ${new Date(memo.createdDate).toLocaleString()}`}
-                />
-                <IconButton
-                  edge="end"
-                  onClick={() => handleRemoveMemo(memo.id)}
-                >
-                  <Delete />
-                </IconButton>
+              <ListItem
+                key={memo.id}
+                alignItems="flex-start"
+                sx={{ flexDirection: "column", alignItems: "flex-start" }}
+              >
+                {editingMemoId === memo.id ? (
+                  <>
+                    <TextField
+                      fullWidth
+                      multiline
+                      value={editingNote}
+                      onChange={(e) => setEditingNote(e.target.value)}
+                    />
+                    <Box
+                      display="flex"
+                      justifyContent="flex-end"
+                      mt={1}
+                      gap={1}
+                    >
+                      <Button
+                        variant="outlined"
+                        size="small"
+                        onClick={() => setEditingMemoId(null)}
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        onClick={() => handleEditSave(memo.id)}
+                        disabled={!editingNote.trim()}
+                      >
+                        Save
+                      </Button>
+                    </Box>
+                  </>
+                ) : (
+                  <>
+                    <ListItemText
+                      primary={memo.note}
+                      secondary={`${memo.creator.firstName} ${
+                        memo.creator.lastName
+                      } — ${new Date(memo.createdDate).toLocaleString()}`}
+                    />
+                    <Box display="flex" gap={1} mt={1}>
+                      <IconButton
+                        edge="end"
+                        onClick={() => handleEditClick(memo)}
+                        size="small"
+                      >
+                        <Edit fontSize="small" />
+                      </IconButton>
+                      <IconButton
+                        edge="end"
+                        onClick={() => handleRemoveMemo(memo.id)}
+                        size="small"
+                      >
+                        <Delete fontSize="small" />
+                      </IconButton>
+                    </Box>
+                  </>
+                )}
               </ListItem>
             ))}
           </List>
