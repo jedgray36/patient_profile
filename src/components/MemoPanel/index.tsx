@@ -48,8 +48,7 @@ const MemoPanel = ({ open, onClose, memos }: MemoPanelProps) => {
       },
     };
 
-    setMemoData([newMemo, ...memos]);
-    setNewNote("");
+    setMemoData((prev) => [newMemo, ...prev]);
   };
 
   const handleRemoveMemo = (id: string) => {
@@ -165,14 +164,14 @@ const MemoPanel = ({ open, onClose, memos }: MemoPanelProps) => {
                       gap={1}
                     >
                       <Button
-                        variant="outlined"
+                        variant="text"
                         size="small"
                         onClick={() => setEditingMemoId(null)}
                       >
                         Cancel
                       </Button>
                       <Button
-                        variant="contained"
+                        variant="outlined"
                         size="small"
                         onClick={() => handleEditSave(memo.id)}
                         disabled={!editingNote.trim()}
