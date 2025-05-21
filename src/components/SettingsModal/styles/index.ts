@@ -32,6 +32,7 @@ export const useModalStyles = () => {
             alignItems: 'flex-end',
             borderTop: "1px solid #ccc",
             marginTop: '3rem',
+             maxWidth: '40rem',
             paddingBottom: '1rem'
         },
         overflow: {
