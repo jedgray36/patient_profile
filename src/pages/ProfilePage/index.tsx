@@ -4,6 +4,7 @@ import Topbar from "../../components/Topbar";
 import { useProfileStyles } from "./styles";
 import PatientData from "../../components/PatientData";
 import { useState } from "react";
+import AppointmentsList from "../../components/AppointmentsList";
 
 const ProfilePage = () => {
   const styles = useProfileStyles();
@@ -22,6 +23,7 @@ const ProfilePage = () => {
           <Box sx={styles.dataContainer}>
             <PatientData />
           </Box>
+          <AppointmentsList />
         </Box>
       </Box>
     </>

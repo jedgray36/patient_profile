@@ -110,3 +110,54 @@ export interface Memo {
     email: string;
   };
 }
+
+export interface User {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
+export interface Attendee {
+  user: User;
+  inviteStatus: 'ACCEPTED' | 'PENDING' | 'DECLINED' | string;
+}
+
+export interface Location {
+  id: string;
+  name: string;
+  address: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  country: string;
+  isVirtual: boolean;
+  meetingLink: string | null;
+}
+
+export interface AppointmentDetails {
+  id: string;
+  eventId: string;
+  patientId: string;
+  providerId: string;
+  reason: string;
+  confirmationStatus: 'CONFIRMED' | 'CANCELLED' | 'PENDING';
+  confirmationDate: string;
+  checkedInDate: string | null;
+  appointmentType: 'FOLLOW_UP' | 'INITIAL' | 'CONSULTATION' | string;
+}
+
+export interface AppointmentEvent {
+  id: string;
+  title: string;
+  organizer: User;
+  start: string;
+  end: string;
+  type: string;
+  status: string;
+  meetingLink: string | null;
+  attendees: Attendee[];
+  location: Location;
+  formCompleted: boolean;
+  appointment: AppointmentDetails;
+}
