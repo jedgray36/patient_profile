@@ -17,7 +17,7 @@ export const useModalStyles = () => {
             bgcolor: 'background.paper',
             minHeight: '10rem',
             maxHeight: '85vh',
-            maxWidth: '40rem',
+            maxWidth: '60rem',
         },
         header: {
             display: 'flex',
@@ -27,12 +27,12 @@ export const useModalStyles = () => {
         },
         footer: {
             display: 'flex',
-            width: '90vw',
+            width: 'vw',
             justifyContent: 'flex-end',
             alignItems: 'flex-end',
             borderTop: "1px solid #ccc",
             marginTop: '3rem',
-             maxWidth: '40rem',
+             maxWidth: '55rem',
             paddingBottom: '1rem'
         },
         overflow: {

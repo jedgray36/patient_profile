@@ -49,7 +49,10 @@ export const usePatientDataStyles = () => {
         },
         tableHeader: {
             fontSize: '1.1rem',
-            fontWeight: '600'
+            fontWeight: '600',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
         },
         alignTitle: {
             fontSize: '1.2rem',

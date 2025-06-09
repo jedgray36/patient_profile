@@ -12,7 +12,12 @@ import notifications from "../../sample_patient_data/alerts.json";
 import payments from "../../sample_patient_data/charges.json";
 import memos from "../../sample_patient_data/memos.json";
 import { usePatientDataStyles } from "./styles";
-import { ChevronRight, CreditCard, MoreVert } from "@mui/icons-material";
+import {
+  Accessibility,
+  ChevronRight,
+  CreditCard,
+  MoreVert,
+} from "@mui/icons-material";
 import PersonalInformation from "../personalInformation";
 import AddressAndEmployment from "../AddressAndEmployment";
 import VitalsAndMeasurements from "../VitalsAndMeasurements";
@@ -126,7 +131,7 @@ const PatientData = () => {
             <Paper sx={styles.outerPaddingTable}>
               <Typography sx={styles.tableHeader}>
                 {`${patientData.firstName} ${patientData.lastName}s`} Medical
-                Information
+                Information <Accessibility />
               </Typography>
               <PatientOtherInfo
                 allergies={patientData.allergies}

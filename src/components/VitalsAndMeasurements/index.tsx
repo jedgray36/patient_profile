@@ -7,12 +7,7 @@ import MedicationsModal from "../MedicationsModal";
 import { useState } from "react";
 import doctorNotes from "../../sample_patient_data/doctors_notes.json";
 import { useProfileContext } from "../../context/profleContext";
-const VitalsAndMeasurements = ({
-  goalWeight,
-  measurements,
-  firstName,
-  medications,
-}: Patient) => {
+const VitalsAndMeasurements = (patient: Patient) => {
   const styles = usePersonalInformationStyles();
   const patientDataStyles = usePatientDataStyles();
   const {
@@ -24,7 +19,7 @@ const VitalsAndMeasurements = ({
     setCreateDoctorsNote,
   } = useProfileContext();
 
-  const currentWeight = measurements.find(
+  const currentWeight = patient.measurements.find(
     (m) => m.type.toUpperCase() === "WEIGHT"
   )?.value;
 
@@ -35,7 +30,7 @@ const VitalsAndMeasurements = ({
 
   let weightColor = "text.primary";
   if (currentWeight !== undefined) {
-    const diff = Math.abs(Number(currentWeight) - goalWeight);
+    const diff = Math.abs(Number(currentWeight) - patient.goalWeight);
 
     if (diff <= 5) weightColor = "success.main";
     else if (diff <= 20) weightColor = "warning.main";
@@ -65,12 +60,12 @@ const VitalsAndMeasurements = ({
                   borderRadius: "1rem",
                 }}
               >
-                {goalWeight}Lb
+                {patient.goalWeight}Lb
               </Typography>
             </Box>
           </Typography>
           <Box>
-            {measurements.map((m, index) => (
+            {patient.measurements.map((m, index) => (
               <TableRow key={index}>
                 <TableCell sx={styles.tableRow}>{m.type}:</TableCell>
                 <TableCell
@@ -104,10 +99,10 @@ const VitalsAndMeasurements = ({
         <MedicationsModal
           doctorsNotes={doctorNotes.data}
           isNotes={isMedicationsModal}
-          medications={medications}
+          medications={patient.medications}
           open={openNotesModal}
           onClose={onCloseModal}
-          firstName={firstName}
+          patient={patient}
         />
       </Box>
     </>
