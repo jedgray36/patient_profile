@@ -4,6 +4,7 @@ import { usePersonalInformationStyles } from "./styles/styles";
 import { AccountCircle, MedicalInformation } from "@mui/icons-material";
 import { usePatientDataStyles } from "../PatientData/styles";
 import { useState } from "react";
+import { useProfileContext } from "../../context/profleContext";
 
 const PersonalInformation = ({
   firstName,
@@ -16,16 +17,25 @@ const PersonalInformation = ({
 }: Patient) => {
   const styles = usePersonalInformationStyles();
   const patientDataStyles = usePatientDataStyles();
+  const { darkMode } = useProfileContext();
 
   return (
     <>
       <Box>
-        <Typography sx={patientDataStyles.alignTitle}>
+        <Typography
+          sx={
+            darkMode
+              ? patientDataStyles.alignTitleDark
+              : patientDataStyles.alignTitle
+          }
+        >
           Personal Information <MedicalInformation sx={styles.marginLeft} />
         </Typography>
-        <AccountCircle sx={{ fontSize: "7rem" }} />
+        <AccountCircle
+          sx={{ fontSize: "7rem", color: darkMode ? "#fff" : "" }}
+        />
 
-        <Typography sx={styles.centerText}>
+        <Typography sx={darkMode ? styles.centerTextDark : styles.centerText}>
           {firstName || lastName
             ? `${firstName ?? ""} ${lastName ?? ""}`
             : "Not provided"}{" "}
@@ -34,28 +44,36 @@ const PersonalInformation = ({
       </Box>
 
       <Box>
-        <Typography sx={styles.personalInfoText}>
+        <Typography
+          sx={darkMode ? styles.personalInfoTextDark : styles.personalInfoText}
+        >
           <Typography sx={styles.bold}>Email:</Typography>
           {email || "Not provided"}
         </Typography>
       </Box>
 
       <Box>
-        <Typography sx={styles.personalInfoText}>
+        <Typography
+          sx={darkMode ? styles.personalInfoTextDark : styles.personalInfoText}
+        >
           <Typography sx={styles.bold}>Date of Birth:</Typography>
           {dateOfBirth || "Not provided"}
         </Typography>
       </Box>
 
       <Box>
-        <Typography sx={styles.personalInfoText}>
+        <Typography
+          sx={darkMode ? styles.personalInfoTextDark : styles.personalInfoText}
+        >
           <Typography sx={styles.bold}>Marital Status:</Typography>
           {maritalStatus || "Not provided"}
         </Typography>
       </Box>
 
       <Box>
-        <Typography sx={styles.personalInfoText}>
+        <Typography
+          sx={darkMode ? styles.personalInfoTextDark : styles.personalInfoText}
+        >
           <Typography sx={styles.bold}>Phone Number:</Typography>
           {phoneNumber || "Not provided"}
         </Typography>

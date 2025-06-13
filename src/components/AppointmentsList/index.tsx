@@ -6,13 +6,14 @@ import { useAppointmentStyles } from "./styles";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { EventNote } from "@mui/icons-material";
+import { useProfileContext } from "../../context/profleContext";
 
 const AppointmentsList = () => {
   const [appointments, setAppointments] = useState<AppointmentEvent[]>(
     eventsData as AppointmentEvent[]
   );
   const [collapsed, setCollapsed] = useState(true);
-
+  const { darkMode } = useProfileContext();
   const styles = useAppointmentStyles();
 
   return (
@@ -35,7 +36,7 @@ const AppointmentsList = () => {
             right: 12,
             backgroundColor: "#fff",
             border: "1px solid #ccc",
-            zIndex: 1,
+            zIndex: 0,
           }}
         >
           {collapsed ? <EventNote /> : <ChevronLeftIcon />}
@@ -43,7 +44,13 @@ const AppointmentsList = () => {
 
         {!collapsed && (
           <>
-            <Typography sx={{ margin: "1rem", fontSize: "1.4rem" }}>
+            <Typography
+              sx={{
+                margin: "1rem",
+                fontSize: "1.4rem",
+                color: darkMode ? "#fff" : "",
+              }}
+            >
               Appointments
             </Typography>
 
@@ -71,7 +78,12 @@ const AppointmentsList = () => {
                       gap: 0.5,
                     }}
                   >
-                    <Typography variant="h6" component="h3" gutterBottom>
+                    <Typography
+                      variant="h6"
+                      component="h3"
+                      gutterBottom
+                      sx={{ color: darkMode ? "#fff" : "" }}
+                    >
                       {appt.title}
                     </Typography>
 
@@ -82,24 +94,39 @@ const AppointmentsList = () => {
                         gap: 0.5,
                       }}
                     >
-                      <Typography variant="body2" color="textSecondary">
+                      <Typography
+                        variant="body2"
+                        color={darkMode ? "#fff" : "textSecondary"}
+                      >
                         <strong>When:</strong>{" "}
                         {new Date(appt.start).toLocaleString()}
                       </Typography>
-                      <Typography variant="body2" color="textSecondary">
+                      <Typography
+                        variant="body2"
+                        color={darkMode ? "#fff" : "textSecondary"}
+                      >
                         <strong>Organizer:</strong> {appt.organizer.firstName}{" "}
                         {appt.organizer.lastName}
                       </Typography>
-                      <Typography variant="body2" color="textSecondary">
+                      <Typography
+                        variant="body2"
+                        color={darkMode ? "#fff" : "textSecondary"}
+                      >
                         <strong>Location:</strong>{" "}
                         {appt.location.isVirtual
                           ? "Virtual"
                           : appt.location.name}
                       </Typography>
-                      <Typography variant="body2" color="textSecondary">
+                      <Typography
+                        variant="body2"
+                        color={darkMode ? "#fff" : "textSecondary"}
+                      >
                         <strong>Reason:</strong> {appt.appointment.reason}
                       </Typography>
-                      <Typography variant="body2" color="textSecondary">
+                      <Typography
+                        variant="body2"
+                        color={darkMode ? "#fff" : "textSecondary"}
+                      >
                         <strong>Status:</strong> {appt.status}
                       </Typography>
                     </Box>

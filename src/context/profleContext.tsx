@@ -20,7 +20,10 @@ export const ProfileProvider = ({ children }: { children: ReactNode }) => {
   const [createDoctorsNote, setCreateDoctorsNote] = useState(false);
   const [openNotesModal, setOpenNotesModal] = useState(false);
   const [isMedicationsModal, setIsMedicationsModal] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    const stored = localStorage.getItem("darkMode");
+    return stored ? JSON.parse(stored) : false;
+  });
 
   return (
     <ProfileContext.Provider

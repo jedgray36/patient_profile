@@ -12,6 +12,7 @@ import {
 import { useEffect, useState } from "react";
 import { NotificationI } from "../../types";
 import { useNotificationDrawer } from "./styles";
+import { useProfileContext } from "../../context/profleContext";
 
 interface NotificationDrawerProps {
   notifications: NotificationI[];
@@ -21,6 +22,7 @@ const NotificationDrawer = ({ notifications }: NotificationDrawerProps) => {
   const [open, setOpen] = useState(false);
   const [unreadCount, setUnreadCount] = useState(notifications.length);
   const styles = useNotificationDrawer();
+  const { darkMode } = useProfileContext();
 
   const [localNotifications, setLocalNotifications] =
     useState<NotificationI[]>(notifications);
@@ -54,10 +56,16 @@ const NotificationDrawer = ({ notifications }: NotificationDrawerProps) => {
       </Box>
 
       <Slide direction="up" in={open} mountOnEnter unmountOnExit>
-        <Paper sx={styles.popup}>
+        <Paper sx={darkMode ? styles.popupDark : styles.popup}>
           <Box display="flex" justifyContent="space-between" mb={1}>
-            <Typography variant="h6">Notifications</Typography>
-            <IconButton onClick={toggleDrawer} size="small">
+            <Typography variant="h6" sx={{ color: darkMode ? "#fff" : "" }}>
+              Notifications
+            </Typography>
+            <IconButton
+              onClick={toggleDrawer}
+              size="small"
+              sx={{ color: darkMode ? "#fff" : "" }}
+            >
               <Close />
             </IconButton>
           </Box>
@@ -81,7 +89,10 @@ const NotificationDrawer = ({ notifications }: NotificationDrawerProps) => {
                           <Typography variant="subtitle1" fontWeight="bold">
                             Form Submitted: {data.name}
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography
+                            variant="body2"
+                            sx={{ color: darkMode ? "#fff" : "text.secondary" }}
+                          >
                             {patient.firstName} {patient.lastName} · {timestamp}
                           </Typography>
                         </>
@@ -92,7 +103,10 @@ const NotificationDrawer = ({ notifications }: NotificationDrawerProps) => {
                           <Typography variant="subtitle1" fontWeight="bold">
                             Appointment: {data.title}
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography
+                            variant="body2"
+                            sx={{ color: darkMode ? "#fff" : "text.secondary" }}
+                          >
                             {new Date(data.start).toLocaleString()} with Dr.{" "}
                             {data.organizer.firstName} {data.organizer.lastName}
                           </Typography>
@@ -107,7 +121,10 @@ const NotificationDrawer = ({ notifications }: NotificationDrawerProps) => {
                           <Typography variant="body2" sx={{ mt: 0.5 }}>
                             {data.message}
                           </Typography>
-                          <Typography variant="caption" color="text.secondary">
+                          <Typography
+                            variant="caption"
+                            sx={{ color: darkMode ? "#fff" : "text.secondary" }}
+                          >
                             {timestamp}
                           </Typography>
                         </>
@@ -119,7 +136,10 @@ const NotificationDrawer = ({ notifications }: NotificationDrawerProps) => {
                       onClick={() => removeNotification(id)}
                       sx={{ alignSelf: "flex-start", mt: 0.5 }}
                     >
-                      <DeleteOutline fontSize="small" />
+                      <DeleteOutline
+                        fontSize="small"
+                        sx={{ color: darkMode ? "#fff" : "" }}
+                      />
                     </IconButton>
                   </Box>
 

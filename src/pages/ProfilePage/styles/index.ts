@@ -11,6 +11,13 @@ export const useProfileStyles = () => {
             overflow: "hidden",
              height: "100vh"
         },
+        containerDark: {
+            backgroundColor:  '#333',
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: "hidden",
+             height: "100vh"
+        },
         innerContainer: {
             display: 'flex',
             flex: 1,

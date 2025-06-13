@@ -29,6 +29,21 @@ export const useNotificationDrawer = () => {
             p: 2,
             zIndex: 1301,
             boxShadow: 6,
+        },
+        popupDark: {
+            position: "fixed",
+            bottom: 48,
+            right: 24,
+            width: 360,
+            maxHeight: "50vh",
+            overflowY: "auto",
+            bgcolor: "grey",
+            color: '#fff',
+            borderTopLeftRadius: 12,
+            borderTopRightRadius: 12,
+            p: 2,
+            zIndex: 1301,
+            boxShadow: 6,
         }
     }
 }

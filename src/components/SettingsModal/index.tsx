@@ -11,6 +11,7 @@ import {
 import { useModalStyles } from "./styles";
 import { Close } from "@mui/icons-material";
 import { useState } from "react";
+import { useProfileContext } from "../../context/profleContext";
 
 interface SettingsModalProps {
   open: boolean;
@@ -21,20 +22,22 @@ const SettingsModal = ({ open, onClose }: SettingsModalProps) => {
   const styles = useModalStyles();
 
   const [fontSize, setFontSize] = useState<number>(14);
-  const [darkMode, setDarkMode] = useState<boolean>(false);
+  const { darkMode, setDarkMode } = useProfileContext();
 
   const handleFontSizeChange = (_: Event, value: number | number[]) => {
     setFontSize(value as number);
   };
 
   const handleDarkModeToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDarkMode(event.target.checked);
+    const isChecked = event.target.checked;
+    setDarkMode(isChecked);
+    localStorage.setItem("darkMode", JSON.stringify(isChecked));
   };
 
   return (
     <>
       <Modal open={open} onClose={onClose}>
-        <Box sx={styles.modal}>
+        <Box sx={darkMode ? styles.modalDark : styles.modal}>
           <Box sx={styles.header}>
             <Typography variant="h6">Settings</Typography>
           </Box>
@@ -63,7 +66,7 @@ const SettingsModal = ({ open, onClose }: SettingsModalProps) => {
                 control={
                   <Switch checked={darkMode} onChange={handleDarkModeToggle} />
                 }
-                label="Dark Mode"
+                label="Dark Mode (unfinished)"
               />
             </Box>
           </Box>

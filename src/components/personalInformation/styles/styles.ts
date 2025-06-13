@@ -11,6 +11,13 @@ return {
         paddingTop: '0.3rem',
         paddingBottom: '0.3rem'
     },
+    personalInfoTextDark: {
+        fontSize: '1rem',
+        display: 'flex',
+        paddingTop: '0.3rem',
+        paddingBottom: '0.3rem',
+        color: '#fff'
+    },
     addressAlign: {
         display: 'flex',
         alignItems: 'center'
@@ -22,10 +29,24 @@ return {
         justifyContent: 'center',
         paddingBottom: '0.2rem'
     },
+        centerTextDark: {
+        fontSize: '1.1rem',
+        fontWeight: 600,
+        display: 'flex',
+        justifyContent: 'center',
+        paddingBottom: '0.2rem',
+        color: '#fff'
+    },
     bold: {
         fontSize: '1rem',
         fontWeight: '600',
         marginRight: '0.2rem'
+    },
+    boldDark: {
+        fontSize: '1rem',
+        fontWeight: '600',
+        marginRight: '0.2rem',
+        color: '#fff'
     },
     tableRow: {
         padding: '0.5rem',
@@ -33,15 +54,34 @@ return {
         fontWeight: '600',
         marginRight: '0.2rem'
     },
+    tableRowDark: {
+        padding: '0.5rem',
+        fontSize: '1rem',
+        fontWeight: '600',
+        marginRight: '0.2rem',
+        color: '#fff'
+    },
         tableRowValue: {
         padding: '0rem',
         fontSize: '1rem',
         marginLeft: '2rem'
     },
+        tableRowValueDark: {
+        padding: '0rem',
+        fontSize: '1rem',
+        marginLeft: '2rem',
+        color: '#fff'
+    },
         boldLarge: {
         fontSize: '1.4rem',
         fontWeight: '600',
         marginRight: '0.2rem',
+    },
+        boldLargeDark: {
+        fontSize: '1.4rem',
+        fontWeight: '600',
+        marginRight: '0.2rem',
+        color: '#fff'
     },
     validAddress: {
         background: '#008000',

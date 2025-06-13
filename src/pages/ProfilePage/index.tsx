@@ -5,13 +5,15 @@ import { useProfileStyles } from "./styles";
 import PatientData from "../../components/PatientData";
 import { useState } from "react";
 import AppointmentsList from "../../components/AppointmentsList";
+import { useProfileContext } from "../../context/profleContext";
 
 const ProfilePage = () => {
   const styles = useProfileStyles();
   const [collapsed, setCollapsed] = useState(true);
+  const { darkMode, setDarkMode } = useProfileContext();
   return (
     <>
-      <Box sx={styles.container}>
+      <Box sx={darkMode ? styles.containerDark : styles.container}>
         <Topbar />
         <Box sx={styles.innerContainer}>
           <Box sx={styles.sidebarContainer}>

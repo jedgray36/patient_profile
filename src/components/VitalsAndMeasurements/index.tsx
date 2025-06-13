@@ -16,6 +16,7 @@ const VitalsAndMeasurements = (patient: Patient) => {
     openNotesModal,
     setOpenNotesModal,
     setEditMode,
+    darkMode,
     setCreateDoctorsNote,
   } = useProfileContext();
 
@@ -40,14 +41,26 @@ const VitalsAndMeasurements = (patient: Patient) => {
   return (
     <>
       <Box>
-        <Typography sx={patientDataStyles.alignTitle}>
+        <Typography
+          sx={
+            !darkMode
+              ? patientDataStyles.alignTitle
+              : patientDataStyles.alignTitleDark
+          }
+        >
           Vitals And Measurements
-          <SquareFoot sx={styles.marginLeft} />
+          <SquareFoot
+            sx={{ marginLeft: "0.5rem", color: darkMode ? "#fff" : "" }}
+          />
         </Typography>
         <Box>
           <Typography sx={styles.personalInfoText}>
             <Box sx={styles.weightContainer}>
-              <Typography sx={styles.boldLarge}>Goal Weight:</Typography>
+              <Typography
+                sx={darkMode ? styles.boldLargeDark : styles.boldLarge}
+              >
+                Goal Weight:
+              </Typography>
               <Typography
                 component="span"
                 sx={{
@@ -67,9 +80,15 @@ const VitalsAndMeasurements = (patient: Patient) => {
           <Box>
             {patient.measurements.map((m, index) => (
               <TableRow key={index}>
-                <TableCell sx={styles.tableRow}>{m.type}:</TableCell>
                 <TableCell
-                  sx={styles.tableRowValue}
+                  sx={darkMode ? styles.tableRowDark : styles.tableRow}
+                >
+                  {m.type}:
+                </TableCell>
+                <TableCell
+                  sx={
+                    darkMode ? styles.tableRowValueDark : styles.tableRowValue
+                  }
                 >{`${m.value} ${m.unit}`}</TableCell>
               </TableRow>
             ))}

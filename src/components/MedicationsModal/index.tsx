@@ -34,7 +34,8 @@ const MedicationsModal = ({
   const [newNoteSummary, setNewNoteSummary] = useState("");
   const [newNoteContent, setNewNoteContent] = useState("");
   const [notesData, setNotesData] = useState(doctorsNotes || []);
-  const { createDoctorsNote, setCreateDoctorsNote } = useProfileContext();
+  const { createDoctorsNote, setCreateDoctorsNote, darkMode } =
+    useProfileContext();
 
   const newNote = () => {
     const newNote = {
@@ -55,7 +56,7 @@ const MedicationsModal = ({
   return (
     <>
       <Modal open={open} onClose={onClose}>
-        <Box sx={styles.modal}>
+        <Box sx={darkMode ? styles.modalDark : styles.modal}>
           <Box sx={styles.header}>
             <Typography variant="h6">
               {isNotes ? "Medications" : "Doctors Notes"} for{" "}

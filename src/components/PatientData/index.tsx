@@ -33,6 +33,7 @@ const PatientData = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [memo, setMemo] = useState(false);
+  const { darkMode } = useProfileContext();
   const menuOpen = Boolean(anchorEl);
   const {
     setEditMode,
@@ -69,7 +70,13 @@ const PatientData = () => {
       {patientData ? (
         <Box sx={styles.container}>
           <Box sx={styles.currentPatientContainer}>
-            <Typography sx={styles.patientNameContainer}>
+            <Typography
+              sx={
+                darkMode
+                  ? styles.patientNameContainerDark
+                  : styles.patientNameContainer
+              }
+            >
               Patient List <ChevronRight />
               <Typography sx={styles.patientName}>
                 {`${patientData.firstName} ${patientData.lastName}`}
@@ -80,7 +87,7 @@ const PatientData = () => {
                 Charges <CreditCard sx={{ ml: 1 }} />
               </Button>
               <IconButton sx={{ ml: "1rem" }} onClick={handleMenuOpen}>
-                <MoreVert />
+                <MoreVert sx={{ color: darkMode ? "#fff" : "" }} />
               </IconButton>
             </Box>
             <Menu
@@ -112,26 +119,41 @@ const PatientData = () => {
           </Box>
           <Box sx={styles.topContainer}>
             <Box sx={styles.responsiveBox}>
-              <Paper sx={styles.outerPadding}>
+              <Paper
+                sx={darkMode ? styles.outerPaddingDark : styles.outerPadding}
+              >
                 <PersonalInformation {...patientData} />
               </Paper>
             </Box>
             <Box sx={styles.responsiveBox}>
-              <Paper sx={styles.outerPadding}>
+              <Paper
+                sx={darkMode ? styles.outerPaddingDark : styles.outerPadding}
+              >
                 <AddressAndEmployment {...patientData} />
               </Paper>
             </Box>
             <Box sx={styles.responsiveBox}>
-              <Paper sx={styles.outerPadding}>
+              <Paper
+                sx={darkMode ? styles.outerPaddingDark : styles.outerPadding}
+              >
                 <VitalsAndMeasurements {...patientData} />
               </Paper>
             </Box>
           </Box>
           <Box sx={styles.tableContainer}>
-            <Paper sx={styles.outerPaddingTable}>
-              <Typography sx={styles.tableHeader}>
+            <Paper
+              sx={
+                darkMode
+                  ? styles.outerPaddingTableDark
+                  : styles.outerPaddingTable
+              }
+            >
+              <Typography
+                sx={darkMode ? styles.tableHeaderDark : styles.tableHeader}
+              >
                 {`${patientData.firstName} ${patientData.lastName}s`} Medical
-                Information <Accessibility />
+                Information{" "}
+                <Accessibility sx={{ color: darkMode ? "#fff" : "" }} />
               </Typography>
               <PatientOtherInfo
                 allergies={patientData.allergies}

@@ -85,6 +85,7 @@ const MemoPanel = ({ open, onClose, memos }: MemoPanelProps) => {
         transition: "transform 0.3s ease-in-out",
         overflowY: "scroll",
         maxHeight: "97vh",
+        zIndex: 3,
       }}
     >
       {memoData.length > 0 ? (

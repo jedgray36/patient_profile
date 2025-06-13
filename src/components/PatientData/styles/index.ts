@@ -18,6 +18,12 @@ export const usePatientDataStyles = () => {
             display: 'flex',
             alignItems: 'center'
         },
+        patientNameContainerDark: {
+            fontSize: '1.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            color: '#fff'
+        },
         topContainer: {
             display: 'flex',
             width: '100%',
@@ -25,9 +31,9 @@ export const usePatientDataStyles = () => {
             gap: 2,
         },
   responsiveBox: {
-    flex: '1 1 100%', // Full width on small screens
+    flex: '1 1 100%',
     '@media (min-width:600px)': {
-      flex: '1 1 32%', // Approx. 3 boxes in a row with gap
+      flex: '1 1 32%',
     },
   },
   tableContainer: {
@@ -38,9 +44,19 @@ export const usePatientDataStyles = () => {
             minHeight: '20rem',
             padding: '1rem'
         },
+        outerPaddingDark: {
+            minHeight: '20rem',
+            padding: '1rem',
+            background: 'grey'
+        },
         outerPaddingTable: {
             minHeight: '13rem',
             padding: '1rem'
+        },
+        outerPaddingTableDark: {
+            minHeight: '13rem',
+            padding: '1rem',
+            background: 'grey'
         },
         patientName: {
             color: theme.palette.primary.main,
@@ -54,12 +70,28 @@ export const usePatientDataStyles = () => {
             alignItems: 'center',
             justifyContent: 'center'
         },
+        tableHeaderDark: {
+            fontSize: '1.1rem',
+            fontWeight: '600',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#fff'
+        },
         alignTitle: {
             fontSize: '1.2rem',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             padding: '0.4rem'
+        },
+        alignTitleDark: {
+            fontSize: '1.2rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '0.4rem',
+            color: '#fff'
         },
         employment: {
             fontSize: '1.2rem',
@@ -68,6 +100,15 @@ export const usePatientDataStyles = () => {
             justifyContent: 'center',
             padding: '0.4rem',
             marginBottom: '2rem'
+        },
+        employmentDark: {
+            fontSize: '1.2rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '0.4rem',
+            marginBottom: '2rem',
+            color: '#fff'
         }
       }
 }

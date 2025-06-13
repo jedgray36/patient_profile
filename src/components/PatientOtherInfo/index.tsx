@@ -1,5 +1,6 @@
 import { Box, Typography, List, ListItem, Divider } from "@mui/material";
 import { useOtherInfoStyles } from "./styles";
+import { useProfileContext } from "../../context/profleContext";
 
 interface PatientOtherInfoProps {
   allergies: string[];
@@ -13,12 +14,17 @@ const PatientOtherInfo = ({
   familyHistory,
 }: PatientOtherInfoProps) => {
   const styles = useOtherInfoStyles();
+  const { darkMode } = useProfileContext();
   return (
     <Box sx={styles.container}>
       <Box sx={styles.section}>
         {allergies.length > 0 && (
           <>
-            <Typography variant="h6" gutterBottom>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{ color: darkMode ? "#fff" : "" }}
+            >
               Allergies
             </Typography>
             <List dense>
@@ -26,8 +32,10 @@ const PatientOtherInfo = ({
                 <ListItem
                   key={index}
                   sx={{
-                    ...styles.listItem,
-                    ...(index % 2 === 1 && styles.alternateRow),
+                    ...(darkMode ? styles.listItemDark : styles.listItem),
+                    ...(index % 2 === 1 && darkMode
+                      ? styles.alternateRowDark
+                      : styles.alternateRow),
                   }}
                 >
                   {item}
@@ -41,7 +49,11 @@ const PatientOtherInfo = ({
       <Box sx={styles.section}>
         {medicalHistory.length > 0 && (
           <>
-            <Typography variant="h6" gutterBottom>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{ color: darkMode ? "#fff" : "" }}
+            >
               Medical History
             </Typography>
             <List dense>
@@ -49,8 +61,10 @@ const PatientOtherInfo = ({
                 <ListItem
                   key={index}
                   sx={{
-                    ...styles.listItem,
-                    ...(index % 2 === 1 && styles.alternateRow),
+                    ...(darkMode ? styles.listItemDark : styles.listItem),
+                    ...(index % 2 === 1 && darkMode
+                      ? styles.alternateRowDark
+                      : styles.alternateRow),
                   }}
                 >
                   {item}
@@ -64,7 +78,11 @@ const PatientOtherInfo = ({
       <Box sx={styles.section}>
         {familyHistory.length > 0 && (
           <>
-            <Typography variant="h6" gutterBottom>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{ color: darkMode ? "#fff" : "" }}
+            >
               Family History
             </Typography>
             <List dense>
@@ -72,8 +90,10 @@ const PatientOtherInfo = ({
                 <ListItem
                   key={index}
                   sx={{
-                    ...styles.listItem,
-                    ...(index % 2 === 1 && styles.alternateRow),
+                    ...(darkMode ? styles.listItemDark : styles.listItem),
+                    ...(index % 2 === 1 && darkMode
+                      ? styles.alternateRowDark
+                      : styles.alternateRow),
                   }}
                 >
                   {item}
