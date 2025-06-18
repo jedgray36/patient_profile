@@ -25,7 +25,7 @@ const AddressAndEmployment = ({
           sx={
             darkMode
               ? patientDataStyles.employmentDark
-              : patientDataStyles.employmentDark
+              : patientDataStyles.employment
           }
         >
           Address And Employment <Badge sx={styles.marginLeft} />
